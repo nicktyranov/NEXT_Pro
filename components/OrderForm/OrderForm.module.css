@@ -1,0 +1,151 @@
+.wrapper {
+   box-sizing: border-box;
+
+   /* max-width: 600px; */
+}
+
+.product-element {
+   display: grid;
+   grid-template-areas:
+      'image info counter delete'
+      'image . . .';
+   grid-template-columns: auto 150px 100px auto;
+   gap: 40px;
+   justify-content: space-between;
+
+   padding: 40px 0;
+
+   border-bottom: 1px solid var(--color-gray-light);
+}
+
+.product-element:first-child {
+   padding-top: 0;
+}
+
+.product-element:last-child {
+   border-bottom: none;
+}
+
+.product-image {
+   display: flex;
+   grid-area: image;
+   align-items: center;
+   justify-content: center;
+
+   width: 100%;
+   max-width: 100%;
+   height: auto;
+
+   object-fit: cover;
+   border-radius: 8px;
+}
+
+.product-info {
+   display: flex;
+   grid-area: info;
+   flex-direction: column;
+   gap: 5px;
+}
+
+.product-info h2 {
+   font-size: 20px;
+   font-weight: 400;
+   line-height: 26px;
+}
+
+.product-info p {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 27px;
+   color: var(--color-brown);
+}
+
+.counter {
+   display: flex;
+   grid-area: counter;
+   justify-content: space-between;
+
+   width: 100%;
+   max-width: 100px;
+   max-height: 50px;
+}
+
+.delete-btn {
+   display: flex;
+   grid-area: delete;
+   justify-content: space-between;
+
+   max-height: auto;
+
+   background: none;
+   border: none;
+}
+
+.deleted {
+   display: none;
+}
+
+@media (width <= 1100px) {
+   .product-element {
+      grid-template-areas:
+         'image info delete'
+         'image counter .';
+      grid-template-columns:
+         1fr
+         1fr;
+      gap: 20px;
+      justify-content: space-between;
+   }
+
+   .counter {
+      align-self: flex-end;
+   }
+}
+
+@media (width <= 992px) {
+   .product-element {
+      grid-template-areas:
+         'image info delete'
+         'image counter .';
+      grid-template-columns:
+         1fr
+         1fr;
+      gap: 10px;
+      justify-content: space-between;
+   }
+
+   .counter {
+      align-self: flex-end;
+   }
+
+   .product-info p,
+   .product-info h2 {
+      font-size: var(--font-16);
+      font-weight: 400;
+      line-height: 20px;
+   }
+}
+
+@media (width <= 768px) {
+   .product-element {
+      grid-template-areas:
+         'image info delete'
+         'image counter .';
+      grid-template-columns:
+         1fr
+         1fr;
+      gap: 10px;
+      justify-content: space-between;
+   }
+
+   .counter {
+      align-self: flex-end;
+   }
+
+   .product-info p,
+   .product-info h2 {
+      font-size: var(--font-14);
+      font-weight: 400;
+      line-height: 20px;
+   }
+}

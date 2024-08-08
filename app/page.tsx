@@ -48,7 +48,7 @@ export default async function Home({}) {
                   heading={product.name}
                   img={product.images[0]}
                   main={true}
-                  isLiked={true}
+                  // isLiked={true}
                />
             ))}
          </div>

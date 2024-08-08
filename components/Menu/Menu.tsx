@@ -12,9 +12,13 @@ import Cart from '../Cart/Cart';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Menu.module.css';
+import cn from 'classnames';
+import { useFavorites } from '../FavoritesContext/FavoritesContext';
 
 export default function Menu({}: IMenuProps) {
    const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
+   const { favoriteList } = useFavorites();
+
    const isLogined = true;
    return (
       <div className={styles.wrapper}>
@@ -39,10 +43,20 @@ export default function Menu({}: IMenuProps) {
                </Link>
                <Search isClicked={false} />
                <Link href={'/cart'} className={styles.cart}>
-                  <Cart amount={10} />
+                  <Cart />
                </Link>
-               <Link href={'/favorites'} className={styles.about}>
-                  <Image src={likeIcon} alt="favorites icon" />
+               <Link href={'/favorites'}>
+                  <div className={styles['favorites-wrapper']}>
+                     <Image src={likeIcon} alt="favorites icon" />
+                     <span
+                        className={cn({
+                           [styles['empty-favorites']]: favoriteList.length < 1,
+                           [styles['favorites']]: favoriteList
+                        })}
+                     >
+                        {favoriteList.length}
+                     </span>
+                  </div>
                </Link>
                <Link href={'/user'} className={styles.user}>
                   <Image src={userIcon} alt="user icon" />
@@ -54,12 +68,12 @@ export default function Menu({}: IMenuProps) {
                <Image src={logo} alt="Logo" className={styles.logo} priority />
             </div>
             <Link href={'/cart'} className={styles.cart}>
-               <Cart amount={10} />
+               <Cart />
             </Link>
             <Image
                src={mobileMenuIcon}
                alt="mobile menu icon"
-               id="mobileMenuIcon"
+               id="mobile-menu-icon"
                onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)}
             />
             <Search isClicked={true} className={styles['mobile-search']} />

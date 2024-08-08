@@ -1,0 +1,35 @@
+.wrapper {
+   margin: 100px 0;
+}
+
+.heading {
+   font-size: var(--font-33);
+   font-weight: 500;
+   line-height: 43px;
+   color: var(--color-black);
+}
+
+.list {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 70px 25px;
+   margin-top: 40px;
+}
+
+@media (width <= 992px) {
+   .list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 15px;
+      margin-top: 20px;
+   }
+}
+
+@media (width <= 768px) {
+   .list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 15px;
+      margin-top: 10px;
+   }
+}

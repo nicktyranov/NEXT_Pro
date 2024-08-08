@@ -14,19 +14,49 @@
    max-width: 380px;
 }
 
+.poster-wrapper {
+   position: relative;
+   margin-bottom: 15px;
+}
+
+.hover-buttons {
+   position: absolute;
+   z-index: 2;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+   display: flex;
+   gap: 30px;
+
+   visibility: hidden;
+}
+
+.poster-wrapper:hover .hover-buttons {
+   visibility: visible;
+}
+
+.hover-button-element {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   width: 100%;
+
+   background: none;
+   border: none;
+}
+
 .poster {
    position: relative;
 
+   display: flex;
+
    width: 100%;
+   max-width: 100%;
    height: 100%;
-   margin-bottom: 15px;
 
-   object-fit: fill;
-
-   /* object-fit: cover; */
    border-radius: 8px;
-
-   /* max-height: 300px; */
 }
 
 .poster-icon-right {

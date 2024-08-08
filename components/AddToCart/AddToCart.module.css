@@ -8,6 +8,10 @@
    text-wrap: nowrap;
 }
 
+.cart-btn {
+   background: var(--color-white);
+}
+
 @media (width <= 1000px) {
    .buttons {
       grid-template-columns: 1fr 1fr;

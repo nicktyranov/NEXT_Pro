@@ -1,7 +1,5 @@
 import iconMail from './icon-mail.svg';
 import Image from 'next/image';
-import Counter from '@/components/Counter/Counter';
-import Button, { addToCart } from '@/components/Button/Button';
 import Favorite from '@/components/Favorite/Favorite';
 import TabContent from '@/components/TabContent/TabContent';
 import { IProductBySKU } from '@/interfaces/interface.bySku';
@@ -102,12 +100,6 @@ export default async function Product({
                   {dataDescription}
                </p>
                <div className={styles['buttons']}>
-                  {/* <Counter className={styles['button']} />
-                  <Button
-                     text="add to the cart"
-                     className={styles['button']}
-                     productPage
-                  /> */}
                   <AddToCart
                      productName={data.name}
                      productPrice={data.price}
@@ -116,7 +108,12 @@ export default async function Product({
                </div>
                <div className={styles['icons']}>
                   <div>
-                     <Favorite className={styles['icon']} />
+                     <Favorite
+                        className={styles['icon']}
+                        width={18}
+                        height={18}
+                        sku={sku.toString()}
+                     />
                   </div>
                   <div>
                      <Image

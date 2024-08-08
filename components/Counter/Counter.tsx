@@ -1,20 +1,19 @@
 'use client';
 import { ICounterProps } from './Counter.props';
 import cn from 'classnames';
-import styles from './Counter.module.css';
 import { useEffect, useState } from 'react';
+import styles from './Counter.module.css';
 
 export default function Counter({
    amount,
-   onChange,
+   onChange = () => {},
    className,
    ...props
 }: ICounterProps) {
+   const [value, setValue] = useState(amount || 1);
    if (!amount || amount < 1) {
       amount = 1;
    }
-
-   const [value, setValue] = useState(amount || 1);
 
    useEffect(() => {
       onChange(value);

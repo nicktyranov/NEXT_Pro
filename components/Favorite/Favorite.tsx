@@ -6,16 +6,34 @@ import icon2 from './like-icon-colored.svg';
 import styles from './Favorite.module.css';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useFavorites } from '../FavoritesContext/FavoritesContext';
 
 export default function Favorite({
-   Liked,
+   // Liked,
+   width,
+   height,
+   sku,
    className,
    ...props
 }: IFavoriteProps) {
-   const [isLiked, setIsLiked] = useState(Liked || false);
+   const { favoriteList, updateFavorites } = useFavorites();
+   const [isLiked, setIsLiked] = useState(
+      favoriteList.includes(sku) ? true : false
+   );
 
    const handleClick = () => {
-      setIsLiked(!isLiked);
+      const currentFavoriteList = [...favoriteList];
+      if (!currentFavoriteList.includes(sku)) {
+         currentFavoriteList.push(sku);
+         setIsLiked(true);
+         updateFavorites(currentFavoriteList);
+      } else {
+         const updatedFavorites = currentFavoriteList.filter(
+            (el) => el !== sku
+         );
+         setIsLiked(false);
+         updateFavorites(updatedFavorites);
+      }
    };
 
    return (
@@ -27,8 +45,9 @@ export default function Favorite({
          <Image
             src={isLiked ? icon2 : icon}
             alt="like icon"
-            width={19}
-            height={19}
+            width={width}
+            height={height}
+            className={styles.icon}
          />
       </button>
    );

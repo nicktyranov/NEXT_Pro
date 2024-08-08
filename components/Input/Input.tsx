@@ -14,13 +14,14 @@ export default function Input({
    ...props
 }: IInputProps) {
    return (
-      <div className={cn(styles['input-wrapper'], className)} {...props}>
+      <div className={cn(styles['input-wrapper'], className)}>
          <input
             className={styles.input}
             type="text"
             placeholder={placeholder}
             value={value}
             onChange={onChange}
+            {...props}
          />
          {icon && (
             <Image
